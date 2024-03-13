@@ -20,7 +20,7 @@ After registering, navigate to the login page (/login1) and log in with the cred
 Dashboard:
 Upon successful login, you will be redirected to the dashboard. Initially, the dashboard will be empty, showing placeholders for "Artifact" and "Document".
 
-Upload Image: filename{uploads}
+Upload Image: foldername{uploads}
 Navigate to the upload page (/upload1). If you haven't created the uploads folder, you'll encounter an error. Ensure the uploads folder exists in the project directory. Upload an image using the provided form.
 
 View Artifact in Dashboard:
