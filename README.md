@@ -5,6 +5,8 @@ npm - [Download & Install npm](https://www.npmjs.com/get-npm)
 
 npm install
 
+firstly make a uplods folder  which is intially empty 
+
 to start 
 node server.js
 
