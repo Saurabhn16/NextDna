@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artifacts</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Add custom styles here */
+        .custom-heading {
+            color: #007bff;
+            /* Blue color */
+        }
+
+        .custom-text {
+            color: #6c757d;
+            /* Gray color */
+        }
+
+        .card-title {
+            color: #00ff33;
+            /* Blue color */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Artifacts</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login1">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/register1">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/upload1">Upload</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/documents1">Documents</a>
+                </li>
+            </ul>
+        </div>
+    </nav> -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Artifacts</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <% if (loggedIn) { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/mydocuments1">MyDocuments</a>
+                    </li>
+                <% } else { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login1">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register1">Register</a>
+                    </li>
+                <% } %>
+                <li class="nav-item">
+                    <a class="nav-link" href="/upload1">Upload</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/documents1">Documents</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Add this line to display the username -->
+<% if (loggedIn) { %>
+    <h1 class="text-black"> Welcome, <%= username %>!</h1>
+<% } %>
+<div class="card">
+<div class="container">
+    <h1 class="mt-5 custom-heading">Artifacts</h1>
+    <div class="row mt-3">
+        <% artifacts.forEach(function(artifact) { %>
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title"><%= artifact.signature %></h5>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">Filename:-<%= artifact.filename %></h6>
+                        <p class="card-text custom-text">
+                            <img src="../uploads/<%= artifact.filename %>" alt="<%= artifact.originalname %>"
+                                class="card-img-top img-fluid">
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">ID:<%= artifact._id %></small>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+
+</div>
+<div class="card">
+<div class="container">
+    <h1 class="mt-5 custom-heading">DOCUMENTS</h1>
+    <div class="row mt-3">
+        <% documents.forEach(function(document) { %>
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%= document.title %>
+                        </h5>
+                      
+                        <p class="card-text custom-text">
+                            <img src="../uploads/<%= document.filename %>"
+                                alt="<%= document.title %>" class="img-fluid">
+                        </p>
+                   
+                    <div class="card-footer">
+                        <small class="text-muted">  <%= document.content %></small>
+                    </div>
+                </div>
+            </div> </div>
+        <% }); %>
+    </div>
+</div>
+</div>
+
+
+
+
+
+    <!-- Bootstrap JS (optional, if you need Bootstrap JS features) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
